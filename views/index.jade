@@ -1,5 +1,8 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  h1 #{title}
+  ul
+    each follow in followers
+      li(class=[follow.type, follow.following.toLowerCase()]) #{follow.follower} followed #{follow.following} on #{follow.type}
+  

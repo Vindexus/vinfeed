@@ -2,26 +2,26 @@ var express = require('express');
 var router = express.Router();
 
 var mongoose = require('mongoose');
-var Feed = require('../models/Feed.js');
+var Follower = require('../models/Follower.js');
 
 /* GET /todos listing. */
 router.get('/', function(req, res, next) {
-  Feed.find(function (err, feeds) {
+  Follower.find(function (err, followers) {
     if (err) return next(err);
-    res.json(feeds);
+    res.json(followers);
   });
 });
 
 /* GET /todos listing. */
 router.get('/:id', function(req, res, next) {
-  Feed.findById(req.params.id, function (err, feed) {
+  Follower.findById(req.params.id, function (err, follower) {
     if (err) return next(err);
-    res.json(feed);
+    res.json(follower);
   });
 });
 
 router.put('/:id', function(req, res, next) {
-  Feed.findByIdAndUpdate(req.params.id, req.body, function(err,post) {
+  Follower.findByIdAndUpdate(req.params.id, req.body, function(err,post) {
     if(err) {
       return next(err);
     }
@@ -31,14 +31,21 @@ router.put('/:id', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-  Feed.create(req.body, function (err, post) {
+  Follower.create(req.body, function (err, post) {
     if (err) return next(err);
     res.json(post);
   });
 });
 
+router.delete('/all', function(req, res, next) {
+  Follower.remove({}, function(err, post) {
+    if(err) return next(err);
+    res.json(post);
+  });
+})
+
 router.delete('/:id', function(req, res, next) {
-  Feed.findByIdAndRemove(req.params.id, function(err, post) {
+  Follower.findByIdAndRemove(req.params.id, function(err, post) {
     if(err) return next(err);
     res.json(post);
   });
