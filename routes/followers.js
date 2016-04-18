@@ -4,7 +4,6 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var Follower = require('../models/Follower.js');
 
-/* GET /todos listing. */
 router.get('/', function(req, res, next) {
   Follower.find(function (err, followers) {
     if (err) return next(err);

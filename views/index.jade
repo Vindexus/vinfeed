@@ -1,8 +1,8 @@
 extends layout
 
 block content
-  h1 #{title}
-  ul
-    each follow in followers
-      li(class=[follow.type, follow.following.toLowerCase()]) #{follow.follower} followed #{follow.following} on #{follow.type}
-  
+  div(ng-controller='FollowsController', ng-init='followsInitialBuffer = #{config.followsInitialBuffer}; followsNumDisplay = #{config.followsNumDisplay};')
+    ul#followers
+      each follow in followers
+        li(class=[follow.type, follow.following.toLowerCase()]) #{follow.follower} followed #{follow.following} on #{follow.type}
+

@@ -1,8 +1,22 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
+}
+
+ul#followers {
+  padding: 0px;
+  margin: 0px;
+  width: 400px;
+}
+
+ul#followers li {
+  margin: 0 0 2px 0;
+  font-size: 14px;
+  background: #EEEEEE;
+  padding: 10px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
