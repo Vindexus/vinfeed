@@ -1,0 +1,33 @@
+extends ../layout
+
+block header
+  .container
+    h1 List of Feeds
+
+block content
+  form.form.form-inline(method='POST', action='/feeds')
+    input.form-control(type='text', name='username',placeholder='Username', size='10')
+    input.form-control(type='text', name='type', placeholder='Type', size='10')
+    input.form-control(type='text', name='accessKey1', placeholder='Access Key 1', size='20')
+    input.form-control(type='text', name='accessKey2', placeholder='Access Key 2', size='20')
+    input.form-control(type='text', name='consumerKey1', placeholder='Consumer Key 1', size='20')
+    input.form-control(type='text', name='consumerKey2', placeholder='Consumer Key 2', size='20')
+    button.btn.btn-primary(type='submit') Add Feed
+
+  div(ng-controller='FeedsController')
+    table.table-striped.table
+      thead
+        tr
+          th Username
+          th Type
+          th Updated
+          th Created
+          th
+      each f in feeds
+        tr
+          td #{f.username}
+          td #{f.type}
+          td #{f.updatedAt}
+          td #{f.createdAt}
+          td
+            button.btn(ng-click='removeFeed(\'#{f._id}\')') Delete

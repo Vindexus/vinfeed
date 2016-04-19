@@ -9,6 +9,16 @@ angular.module('app', ['ngResource', 'ngAnimate'])
         }
       }
     }])
+.factory('Feeds', ['$http', function($http){
+      return {
+        get: function (params) {
+          return $http({method: 'GET', url: '/feeds', params: params});
+        },
+        delete: function(id) {
+          return $http({method: 'DELETE', url: '/feeds/' + id});
+        }
+      }
+    }])
 .controller('FollowsController', ['$scope', 'Followers', '$timeout', function ($scope, Followers, $timeout) {
   $scope.removeFollow = function(id) {
     if(!confirm("Remove follow?")) {
@@ -16,8 +26,14 @@ angular.module('app', ['ngResource', 'ngAnimate'])
     }
     Followers.delete(id);
   };
-
-  console.log("FollowsController");
+}])
+.controller('FeedsController', ['$scope', 'Feeds', '$timeout', function ($scope, Feeds, $timeout) {
+  $scope.removeFeed = function(id) {
+    if(!confirm("Remove feed?")) {
+      return;
+    }
+    Feeds.delete(id);
+  };
 }])
 .controller('FollowsCaptureController', ['$scope', 'Followers', '$timeout', function ($scope, Followers, $timeout) {
   $scope.followers = [];

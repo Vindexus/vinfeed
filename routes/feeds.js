@@ -8,7 +8,14 @@ var Feed = require('../models/Feed.js');
 router.get('/', function(req, res, next) {
   Feed.find(function (err, feeds) {
     if (err) return next(err);
-    res.json(feeds);
+    res.format( {
+      json: function () {
+        res.json(feeds); 
+      },
+      html: function () {
+        res.render('feeds/index', {title: "Feeds", feeds: feeds});
+      }
+    });
   });
 });
 
