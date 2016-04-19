@@ -6,7 +6,7 @@ a {
 
 ul#followers {
   padding: 0px;
-  margin: 0px;
+  margin: 10px 0px 0px 0px;
   width: 400px;
   overflow: hidden; }
   ul#followers li {
@@ -16,17 +16,33 @@ ul#followers {
     padding: 0px 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    -webkit-transition: margin ease 0.5s, opacity ease 1.5s;
+    -webkit-transition: margin ease 0.5s, opacity linear 1.5s;
     line-height: 3em; }
-    ul#followers li .verb:before {
-      content: " followed "; }
-    ul#followers li.twitch .type:before {
-      content: " on Twitch"; }
-    ul#followers li.twitter .type:before {
-      content: " > Twitter"; }
+    ul#followers li.twitch {
+      border-color: #6441A5;
+      background: #B9A3E3;
+      color: #fff; }
+      ul#followers li.twitch .type:before {
+        content: " on Twitch"; }
+      ul#followers li.twitch .verb:before {
+        content: " followed "; }
+    ul#followers li.twitter {
+      border-color: #66757f;
+      background: #55acee;
+      color: #FFFFFF; }
+      ul#followers li.twitter .follower:before,
+      ul#followers li.twitter .following:before {
+        content: "@"; }
+      ul#followers li.twitter .verb:before {
+        content: " > "; }
     ul#followers li.ng-enter {
       margin-top: -40px;
       opacity: 0; }
     ul#followers li.ng-enter.ng-enter-active {
       margin-top: 0px;
       opacity: 1; }
+    ul#followers li.ng-leave {
+      opacity: 1;
+      -webkit-transition: opacity 1s linear; }
+    ul#followers li.ng-leave.ng-leave-active {
+      opacity: 0; }

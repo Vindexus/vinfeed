@@ -1,0 +1,13 @@
+extends ../layout
+
+block content
+  div(ng-controller='FollowsCaptureController', ng-init='followsDisplayTime = #{config.followsDisplayTime}; followsInitialBuffer = #{config.followsInitialBuffer}; followsNumDisplay = #{config.followsNumDisplay};')
+    ul#followers
+      li(ng-repeat='follow in followers', 'class'='{{follow.type}} {{follow.following.toLowerCase()}}')
+        span.follower {{follow.follower}}
+        span.verb
+        span.following {{follow.following}}
+        span.type {{folow.type}}
+      //li(class=[follow.type, follow.following.toLowerCase()]) #{follow.follower} followed #{follow.following} on #{follow.type}
+
+ 

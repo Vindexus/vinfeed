@@ -1,5 +1,9 @@
 extends ../layout
 
+block header
+  .container
+    h1 Edit a Follow
+
 block content
   form(action="/followers/#{follow._id}", method="POST")
     .form-group

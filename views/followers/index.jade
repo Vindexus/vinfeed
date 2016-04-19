@@ -1,5 +1,9 @@
 extends ../layout
 
+block header
+  .container
+    h1 List of Follows
+
 block content
   div(ng-controller='FollowsController')
     table.table-striped.table
@@ -17,5 +21,6 @@ block content
           td #{follow.type}
           td #{follow.createdAt}
           td
-            a.btn(href='/followers/#{follow._id}') Edit
+            a.btn.btn-primary(href='/followers/#{follow._id}', role='button') Edit
+            =' '
             button.btn(ng-click='removeFollow(\'#{follow._id}\')') Delete

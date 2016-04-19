@@ -6,7 +6,7 @@ a
 
 ul#followers
   padding: 0px
-  margin: 0px
+  margin: 10px 0px 0px 0px
   width: 400px
   overflow: hidden
 
@@ -17,17 +17,33 @@ ul#followers
     padding: 0px 10px
     border: 1px solid #ccc
     border-radius: 5px
-    -webkit-transition: margin ease 0.5s, opacity ease 1.5s
+    -webkit-transition: margin ease 0.5s, opacity linear 1.5s
     line-height: 3em
 
-    .verb:before
-      content: " followed "
 
-    &.twitch .type:before
-      content: " on Twitch"
+    &.twitch
+      border-color: #6441A5
+      background: #B9A3E3
+      color: #fff
 
-    &.twitter .type:before
-      content: " > Twitter"
+      .type:before
+        content: " on Twitch"
+  
+      .verb:before
+        content: " followed "
+
+
+    &.twitter
+      border-color: #66757f
+      background: #55acee
+      color: #FFFFFF
+
+      .follower:before,
+      .following:before
+        content: "@"
+
+      .verb:before
+        content: " > "
 
     &.ng-enter
       margin-top: -40px
@@ -36,3 +52,10 @@ ul#followers
     &.ng-enter.ng-enter-active
       margin-top: 0px
       opacity: 1
+
+    &.ng-leave
+      opacity: 1
+      -webkit-transition: opacity 1s linear
+
+    &.ng-leave.ng-leave-active
+      opacity: 0

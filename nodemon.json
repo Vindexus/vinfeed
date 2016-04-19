@@ -1,0 +1,3 @@
+{
+  "watch": ["public/stylesheets/style.sass", "*.*"]
+}

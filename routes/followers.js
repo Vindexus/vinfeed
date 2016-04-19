@@ -42,6 +42,10 @@ router.get('/', function(req, res, next) {
   }).limit(limit).sort(sort).skip(skip);
 });
 
+router.get('/capture', function(req, res, next) {
+  res.render('followers/capture', {title: "Capture Follows", config: config});
+});
+
 /* GET /todos listing. */
 router.get('/:id', function(req, res, next) {
   Follower.findById(req.params.id, function (err, follow) {
