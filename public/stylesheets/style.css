@@ -1,22 +1,30 @@
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
 
 a {
-  color: #00B7FF;
-}
+  color: #00B7FF; }
 
 ul#followers {
   padding: 0px;
   margin: 0px;
-  width: 400px;
-}
-
-ul#followers li {
-  margin: 0 0 2px 0;
-  font-size: 14px;
-  background: #EEEEEE;
-  padding: 10px 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
+  width: 400px; }
+  ul#followers li {
+    margin: 0 0 2px 0;
+    font-size: 14px;
+    background: #EEEEEE;
+    padding: 10px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    -webkit-transition: all linear 0.5s; }
+    ul#followers li .verb:before {
+      content: " followed "; }
+    ul#followers li.twitch .type:before {
+      content: " on Twitch"; }
+    ul#followers li.twitter .type:before {
+      content: " > Twitter"; }
+    ul#followers li.ng-enter {
+      opacity: 1;
+      height: 0px; }
+    ul#followers li.ng-enter.ng-enter-active {
+      opacity: 1;
+      height: auto; }

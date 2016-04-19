@@ -1,0 +1,36 @@
+body
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif
+
+a
+  color: #00B7FF
+
+ul#followers
+  padding: 0px
+  margin: 0px
+  width: 400px
+
+  li
+    margin: 0 0 2px 0
+    font-size: 14px
+    background: #EEEEEE
+    padding: 10px 10px
+    border: 1px solid #ccc
+    border-radius: 5px
+    -webkit-transition: all linear 0.5s
+
+    .verb:before
+      content: " followed "
+
+    &.twitch .type:before
+      content: " on Twitch"
+
+    &.twitter .type:before
+      content: " > Twitter"
+
+    &.ng-enter
+      opacity: 1
+      height: 0px
+
+    &.ng-enter.ng-enter-active
+      opacity: 1
+      height: auto

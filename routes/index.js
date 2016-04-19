@@ -7,9 +7,7 @@ var config = require('../config/config.js');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  var followers = Follower.find(function(err, followers) {
-    res.render('index', { title: 'Followers', followers: followers, config: config});
-  }).skip(config.followsInitialBuffer).limit(config.followsNumDisplay);
+  res.render('index', { title: 'Followers', config: config});
 });
 
 module.exports = router;

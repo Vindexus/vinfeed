@@ -5,10 +5,23 @@ var mongoose = require('mongoose');
 var Follower = require('../models/Follower.js');
 
 router.get('/', function(req, res, next) {
-  Follower.find(function (err, followers) {
+  var limit = req.query.hasOwnProperty("limit") ? req.query.limit : 5;
+  var skip = req.query.hasOwnProperty("skip") ? req.query.skip : 0;
+  var sort = req.query.hasOwnProperty("sort") ? req.sort : {_id: -1};
+  var where = {}; 
+
+  if(req.query.hasOwnProperty("type")) {
+    where.type = req.query.type;
+  }
+
+  if(req.query.hasOwnProperty("after")) {
+    where['_id'] = {$gt: req.query.after};
+  }
+
+  Follower.find(where, function (err, followers) {
     if (err) return next(err);
     res.json(followers);
-  });
+  }).limit(limit).sort(sort).skip(skip);
 });
 
 /* GET /todos listing. */

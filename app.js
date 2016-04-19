@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var fs = require('fs'); 
 
 var routes = require('./routes/index');
 var feeds = require('./routes/feeds');
@@ -19,6 +20,20 @@ mongoose.connect('mongodb://localhost/vinfeed', function(err) {
         console.log('connection successful');
     }
 });
+
+var sass = require('node-sass');
+var sassOutfile = './public/stylesheets/style.css';
+sass.render({
+  file: './public/stylesheets/style.sass',
+  outFile: sassOutfile
+}, function(err, result) {
+  console.log("sass result", result)
+  if(!err) {
+    fs.writeFile(sassOutfile, result.css, function (err) {
+      console.log("write err", err);
+    });
+  }
+})
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

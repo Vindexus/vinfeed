@@ -76,7 +76,7 @@ Feed.find(function(err, feeds) {
     for(var i in feeds) {
       var f = feeds[i];
       if(f.type == 'twitter') {
-        //findTwitter(f);
+        findTwitter(f);
       }
       else if(f.type == 'twitch') {
         findTwitch(f);
