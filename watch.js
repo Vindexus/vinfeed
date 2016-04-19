@@ -9,8 +9,9 @@ var TwitchApi = require('twitch-api');
 var config = require('./config/config.js');
 var Feed = require('./models/Feed.js');
 var Follower = require('./models/Follower.js');
+var twitch = new TwitchApi({});
 
-mongoose.connect('mongodb://localhost/vinfeed', function(err) {
+mongoose.connect(config.mongodbUrl, function(err) {
     if(err) {
         console.log('connection error', err);
     } else {
@@ -40,7 +41,6 @@ app.use(function(err, req, res, next) {
   });
 });
 
-var twitch = new TwitchApi({});
 
 function findTwitter(f) {
   var client = new Twitter({

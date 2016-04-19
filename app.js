@@ -9,11 +9,12 @@ var fs = require('fs');
 var routes = require('./routes/index');
 var feeds = require('./routes/feeds');
 var followers = require('./routes/followers');
+var config = require('./config/config');
 
-var app = express(); 
+var app = express();
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/vinfeed', function(err) {
+mongoose.connect(config.mongodbUrl, function(err) {
     if(err) {
         console.log('connection error', err);
     } else {
