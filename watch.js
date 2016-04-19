@@ -11,7 +11,7 @@ var Feed = require('./models/Feed.js');
 var Follower = require('./models/Follower.js');
 var twitch = new TwitchApi({});
 
-mongoose.connect(process.env.MONGODB_URI, function (error) {
+mongoose.connect(process.env.MONGODB_URI, function (err) {
     if(err) {
         console.log('connection error', err);
     } else {
@@ -63,9 +63,14 @@ function findTwitter(f) {
 
 function findTwitch(f) {
   twitch.getChannelFollows(f.username, function(err, res) {
-    for(var i in res.follows) {
-      console.log(res.follows[i].user.display_name + " followed " + f.username + " on " + f.type);
-      Follower.create({follower: res.follows[i].user.display_name, following: f.username, type: f.type});
+    if(err) {
+      console.log("err", err);
+    }
+    else {
+      for(var i in res.follows) {
+        console.log(res.follows[i].user.display_name + " followed " + f.username + " on " + f.type);
+        Follower.create({follower: res.follows[i].user.display_name, following: f.username, type: f.type});
+      } 
     }
   });
 }
