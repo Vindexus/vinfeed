@@ -11,7 +11,7 @@ var Feed = require('./models/Feed.js');
 var Follower = require('./models/Follower.js');
 var twitch = new TwitchApi({});
 
-mongoose.connect(config.mongodbUrl, function(err) {
+mongoose.connect(process.env.MONGODB_URI, function (error) {
     if(err) {
         console.log('connection error', err);
     } else {
