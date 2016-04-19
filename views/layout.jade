@@ -9,6 +9,13 @@ html(ng-app='app')
     script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-animate.min.js")
     script(src='/javascripts/app.js')
   body
+    .container
+      nav.navbar.navbar-default
+        ul.nav.navbar-nav
+          li
+            a(href='/followers') Followers
+          li
+            a(href='/feeds') Feeds
     block header
     .container
       block content

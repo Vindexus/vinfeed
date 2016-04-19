@@ -14,12 +14,9 @@ var config = require('./config/config');
 var app = express();
 
 var mongoose = require('mongoose');
-mongoose.connect(config.mongodbUrl, function(err) {
-    if(err) {
-        console.log('connection error', err);
-    } else {
-        console.log('connection successful');
-    }
+mongoose.connect(process.env.MONGOLAB_URI, function (error) {
+    if (error) console.error(error);
+    else console.log('mongo connected');
 });
 
 var sass = require('node-sass');
