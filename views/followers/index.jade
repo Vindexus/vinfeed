@@ -1,0 +1,21 @@
+extends ../layout
+
+block content
+  div(ng-controller='FollowsController')
+    table.table-striped.table
+      thead
+        tr
+          th Follower
+          th Following
+          th Type
+          th Created
+          th
+      each follow in followers
+        tr
+          td #{follow.follower}
+          td #{follow.following}
+          td #{follow.type}
+          td #{follow.createdAt}
+          td
+            a.btn(href='/followers/#{follow._id}') Edit
+            button.btn(ng-click='removeFollow(\'#{follow._id}\')') Delete

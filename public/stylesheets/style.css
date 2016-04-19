@@ -7,15 +7,17 @@ a {
 ul#followers {
   padding: 0px;
   margin: 0px;
-  width: 400px; }
+  width: 400px;
+  overflow: hidden; }
   ul#followers li {
     margin: 0 0 2px 0;
     font-size: 14px;
     background: #EEEEEE;
-    padding: 10px 10px;
+    padding: 0px 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    -webkit-transition: all linear 0.5s; }
+    -webkit-transition: margin ease 0.5s, opacity ease 1.5s;
+    line-height: 3em; }
     ul#followers li .verb:before {
       content: " followed "; }
     ul#followers li.twitch .type:before {
@@ -23,8 +25,8 @@ ul#followers {
     ul#followers li.twitter .type:before {
       content: " > Twitter"; }
     ul#followers li.ng-enter {
-      opacity: 1;
-      height: 0px; }
+      margin-top: -40px;
+      opacity: 0; }
     ul#followers li.ng-enter.ng-enter-active {
-      opacity: 1;
-      height: auto; }
+      margin-top: 0px;
+      opacity: 1; }
