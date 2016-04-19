@@ -15,8 +15,13 @@ var app = express();
 
 var mongoose = require('mongoose');
 console.log("process", process);
+console.log("----------------------");
 console.log("process.env", process.env);
+console.log("----------------------");
+console.log("process.MONGOLAB_URI", process.MONGOLAB_URI);
+console.log("----------------------");
 console.log("process.env.MONGOLAB_URI", process.env.MONGOLAB_URI);
+console.log("----------------------");
 mongoose.connect(process.env.MONGOLAB_URI, function (error) {
     if (error) console.error(error);
     else console.log('mongo connected');
