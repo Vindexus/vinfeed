@@ -26,6 +26,13 @@ Install MongoDB (done separately) then set the URI in your ENV variables. For lo
 
     set MONGODB_URI={your_mongo_uri}
     
+Set your Twitter API keys
+
+    set TWITTER_CONSUMER_KEY={inserthere}
+    set TWITTER_CONSUMER_SECRET={inserthere}
+    set TWITTER_ACCESS_KEY={inserthere}
+    set TWITTER_ACCESS_SECRET={inserthere}    
+    
 Run the app
 
     node app.js
