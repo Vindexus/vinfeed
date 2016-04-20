@@ -1,13 +1,17 @@
 # Vinfeed
 Feed of social media subscribers/followers to display on Twitch stream.
 
+# Preview
+
+![Preview of Capture](http://i.imgur.com/LxoAa3x.png)
+
 # Prerequisities
 
     1. Node.js
     2. MongoDB
     3. Twitter API keys - [Register a Twitter App here](https://apps.twitter.com/)
 
-## Installation
+# Installation
 This app is meant to be used locally on the machine that is doing the Twitch streaming, but it doesn't need to be.
 
 Clone the app into the directory you wish to run it in.
