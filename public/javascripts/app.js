@@ -1,4 +1,4 @@
-angular.module('app', ['ngResource', 'ngAnimate'])
+angular.module('app', ['ngResource', 'ngAnimate', 'ngRoute'])
 .factory('Followers', ['$http', function($http){
       return {
         get: function (params) {
@@ -19,12 +19,14 @@ angular.module('app', ['ngResource', 'ngAnimate'])
         }
       }
     }])
-.controller('FollowsController', ['$scope', 'Followers', '$timeout', function ($scope, Followers, $timeout) {
+.controller('FollowsController', ['$scope', 'Followers', '$route', function ($scope, Followers, $route) {
   $scope.removeFollow = function(id) {
     if(!confirm("Remove follow?")) {
       return;
     }
-    Followers.delete(id);
+    Followers.delete(id).success(function () {
+      location.reload();
+    });
   };
 }])
 .controller('FeedsController', ['$scope', 'Feeds', '$timeout', function ($scope, Feeds, $timeout) {
@@ -32,7 +34,9 @@ angular.module('app', ['ngResource', 'ngAnimate'])
     if(!confirm("Remove feed?")) {
       return;
     }
-    Feeds.delete(id);
+    Feeds.delete(id).success(function () {
+      location.reload();      
+    });
   };
 }])
 .controller('FollowsCaptureController', ['$scope', 'Followers', '$timeout', function ($scope, Followers, $timeout) {
