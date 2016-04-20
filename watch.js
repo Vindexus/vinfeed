@@ -10,6 +10,12 @@ var config = require('./config/config.js');
 var Feed = require('./models/Feed.js');
 var Follower = require('./models/Follower.js');
 var twitch = new TwitchApi({});
+var client = new Twitter({
+  consumer_key: process.env.TWITTER_CONSUMER_KEY,
+  consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
+  access_token_key: process.env.TWITTER_ACCESS_KEY,
+  access_token_secret: process.env.TWITTER_ACCESS_SECRET
+});
 
 mongoose.connect(process.env.MONGODB_URI, function (err) {
     if(err) {
@@ -43,13 +49,6 @@ app.use(function(err, req, res, next) {
 
 
 function findTwitter(f) {
-  var client = new Twitter({
-    consumer_key: f.consumerKey1,
-    consumer_secret: f.consumerKey2,
-    access_token_key: f.accessKey1,
-    access_token_secret: f.accessKey2
-  });
-   
   var params = {screen_name: f.username, skip_status: true, count: 100};
   client.get('followers/list', params, function(error, followers, response){
     if (!error) {
